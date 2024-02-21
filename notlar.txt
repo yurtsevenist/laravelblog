@@ -1,0 +1,35 @@
+laravel komutları:
+
+*laravel projesi oluşturmak için:
+
+composer create-project laravel/laravel example-app
+
+*laravel projesini çalıştırmak için:
+
+php artisan serve
+
+*laravel projesini farklı portta çalıştırmak için
+
+php artisan serve --port=8005
+
+*laravel projesindeki tabloları veritabanına ilk defa migrate etmek için
+
+php artisan migrate
+
+*laravel projesindeki tabloları veritabanına tekra migrate etmek için
+
+php artisan migrate:fresh
+
+* laravel projesindeki tabloları sahte veri ile aktarmak için
+
+php artisan migrate:fresh --seed
+
+* github tan bir laravel projesini indirip çalıştırmak için sırasıyla
+    - projeyi zip olarak indir.
+    - zip ten çıkar
+    - vs code projeyi aç
+    - terminal ekranından composer update komutunu çalıştır
+    - .env isimli bir dosya oluştur
+    - .env.example dosyası içindekileri kopyalayıp .env dosyası içine yapıştır
+    - php artisan key:generate komutunu çalıştır
+    - php artisan serve komutu ile projeyi çalıştır.
