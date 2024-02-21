@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,4 @@ Route::get('/', function () {
     return view('main');
 });
 
-Route::get('blog', function () {
-    return view('blog');
-})->name('blog');
+Route::get('blog',[Controller::class,'blog'])->name('blog');
