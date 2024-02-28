@@ -20,3 +20,5 @@ Route::get('/', function () {
 
 Route::get('blog',[Controller::class,'blog'])->name('blog');
 Route::get('blogdetail/{id}',[Controller::class,'blogdetail'])->name('blogdetail');
+Route::get('likeBlog',[Controller::class,'likeBlog'])->name('likeBlog');
+Route::get('dislikeBlog',[Controller::class,'dislikeBlog'])->name('dislikeBlog');
