@@ -10,8 +10,8 @@
           <img class="rounded shadow-sm" src="{{$blog->image}}" width="80%" alt="" srcset="">
        </div>
        <div class="col-8 mt-2">
-          <p class="pt-2"><strong>{{$blog->title}}</strong></p>
-          <p style="height:200px">{{$blog->content}}</p>
+          <p class="pt-2"><strong><a class="text-info text-decoration-none" href="{{route('blogdetail',$blog->id)}}">{{Str::upper($blog->title)}}</a></strong></p>
+          <p style="height:200px">{{Str::words($blog->content,100)}}</p>
            <div class="row">
             <div class="col-4">
                 <a class="text-decoration-none"  href="#" title="Okunma Sayısı"><i class="bi bi-eye"></i> {{$blog->hit}}</a>
@@ -25,6 +25,9 @@
            </div>
        </div>
       @endforeach
+      <div class="col-6 offset-3 text-center">
+         {{ $blogs->links() }}
+      </div>
    </div>
 </div>
 @endsection

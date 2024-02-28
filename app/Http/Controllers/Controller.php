@@ -13,7 +13,12 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     public function blog()
     {
-        $blogs=Blog::orderBy('created_at','DESC')->get();
+        $blogs=Blog::orderBy('created_at','DESC')->paginate(10);
         return view('blog',compact('blogs')); 
+    }
+    public function blogdetail($id)
+    {
+        $blog=Blog::whereId($id)->first();
+        return view('blogdetail',compact('blog')); 
     }
 }

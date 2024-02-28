@@ -19,3 +19,4 @@ Route::get('/', function () {
 });
 
 Route::get('blog',[Controller::class,'blog'])->name('blog');
+Route::get('blogdetail/{id}',[Controller::class,'blogdetail'])->name('blogdetail');

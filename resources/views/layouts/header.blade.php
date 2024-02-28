@@ -34,7 +34,7 @@
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{url('/')}}#skills">Yeteneklerim</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{url('/')}}#interests">Hobilerim</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{{url('/')}}#awards">Ödüllerim</a></li>
-                    <li class="nav-item"><a class="nav-link @if(Request::segment(1)=='blog') active @endif" href="{{url('blog')}}">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link @if(Request::segment(1)=='blog' or Request::segment(1)=='blogdetail' ) active @endif" href="{{url('blog')}}">Blog</a></li>
                 </ul>
             </div>
         </nav>
