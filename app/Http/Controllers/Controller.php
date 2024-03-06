@@ -21,7 +21,8 @@ class Controller extends BaseController
     {
         $ip = $request->getClientIp();//bu id li blog yazısını açan kullanıcının ip adresini aldık
         $ara=Comment::whereIp($ip)->whereBlog_id($id)->first();
-        $blog=Blog::whereId($id)->first();       
+        $blog=Blog::whereId($id)->first();  
+        $comments=Comment::whereBlog_id($id)->orderBy('created_at','DESC')->get();     
         if(!$ara)
         {
             $kayit=new Comment;
@@ -32,7 +33,7 @@ class Controller extends BaseController
             $blog->hit+=1;
             $blog->save();
         }     
-        return view('blogdetail',compact('blog')); 
+        return view('blogdetail',compact('blog','comments')); 
     }
     public function likeBlog(Request $request)
     {
@@ -103,5 +104,32 @@ class Controller extends BaseController
 
         }  
         return response()->json($blog); 
+    }
+    public function commentPost(Request $request)
+    {
+        $ip = $request->getClientIp();
+        $ara=Comment::whereIp($ip)->whereBlog_id($request->id)->first();
+        $blog=Blog::whereId($request->id)->first();       
+        if(!$ara)
+        {
+            $kayit=new Comment;
+            $kayit->ip=$ip;
+            $kayit->blog_id=$request->blog_id;
+            $kayit->commented=$request->comment;
+            $kayit->name=$request->name;   
+            $kayit->save();        
+                  
+        }
+        else
+        {
+        
+            $ara->ip=$ip;
+            $ara->blog_id=$request->blog_id;
+            $ara->commented=$request->comment;
+            $ara->name=$request->name;   
+            $ara->save(); 
+
+        }
+        return redirect()->back();  
     }
 }
